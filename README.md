@@ -7,7 +7,7 @@
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-1.8.0-orange?logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
 [![Model: BernoulliNB](https://img.shields.io/badge/Model-BernoulliNB-purple)](https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.BernoulliNB.html)
 
-A lightweight, production-ready SMS spam detection system built with a **Bernoulli Naive Bayes** classifier and **Count Vectorizer**. Trained on the [Spam Email Classification Dataset](https://www.kaggle.com/datasets/phangud/spamcsv), the model distinguishes ham (legitimate) messages from spam with a vocabulary of **6,715 features**.
+A lightweight, production-ready Email/SMS spam detection system built with a **Bernoulli Naive Bayes** classifier. Trained on the [Spam Email Classification Dataset](https://www.kaggle.com/datasets/phangud/spamcsv), the model distinguishes ham (legitimate) messages from spam with a vocabulary of **6,715 features**.
 
 ---
 
@@ -15,7 +15,7 @@ A lightweight, production-ready SMS spam detection system built with a **Bernoul
 
 ## Overview
 
-This project packages a trained spam classifier as a single serialized `model_bundle.pkl` file containing both the fitted vectorizer and the Naive Bayes model. This design means zero preprocessing steps at inference time — just load and predict.
+This project packages a trained spam classifier as a single serialized `model_bundle.pkl` file containing the fitted vectorizer and the Naive Bayes model. This design means zero preprocessing steps at inference time — just load and predict.
 
 **Key characteristics:**
 - Binary classification: `0 = ham`, `1 = spam`
@@ -31,15 +31,6 @@ This project packages a trained spam classifier as a single serialized `model_bu
 Raw SMS Text
      │
      ▼
-┌─────────────────────────────────────┐
-│  CountVectorizer                    │
-│  ─ analyzer   : word                │
-│  ─ ngram_range: (1, 1)              │
-│  ─ lowercase  : True                │
-│  ─ vocabulary : 6,715 tokens        │
-└──────────────────┬──────────────────┘
-                   │  Binary feature matrix
-                   ▼
 ┌─────────────────────────────────────┐
 │  BernoulliNB                        │
 │  ─ alpha     : 1.0 (Laplace)        │
@@ -105,16 +96,13 @@ for msg, pred, prob in zip(messages, predictions, probabilities):
 [HAM]  (0.0% spam confidence) → Hey, are you coming to dinner tonight?
 ```
 
-
-
-
+---
 
 ## Model Details
 
 | Property | Value |
 |---|---|
 | Algorithm | Bernoulli Naive Bayes |
-| Vectorizer | CountVectorizer (unigrams) |
 | Vocabulary Size | 6,715 tokens |
 | Classes | `0` = ham, `1` = spam |
 | Class Prior (ham) | 0.8755 |
@@ -131,5 +119,3 @@ for msg, pred, prob in zip(messages, predictions, probabilities):
 **Ham indicators:** `go`, `come`, `got`, `know`, `like`, `ok`, `time`, `good`, `love`
 
 ---
-
-
