@@ -45,26 +45,7 @@ Raw SMS Text
 
 ---
 
-## Installation
 
-**Prerequisites:** Python 3.8+
-
-```bash
-# Clone the repository
-git clone https://github.com/your-username/sms-spam-classifier.git
-cd sms-spam-classifier
-
-# Install dependencies
-pip install scikit-learn numpy
-```
-
-> **Note:** The model was serialized with scikit-learn `1.8.0`. Using a significantly different version may raise a `InconsistentVersionWarning`. It is recommended to match this version for reproducibility.
-
-```bash
-pip install scikit-learn==1.8.0
-```
-
----
 
 ## Usage
 
